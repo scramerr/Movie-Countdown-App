@@ -10,6 +10,7 @@ interface Movie {
     description: string;
     releaseDate: string;
     posterPath: string;
+    remainingTime?: RemainingTime; 
 }
 
 interface RemainingTime {
@@ -79,7 +80,7 @@ export const MovieSearchPage = () => {
         <>
             <h1 className="title">Upcoming Movies Countdown</h1>
             <div className="movie-list">
-                {movies.map((movie: any) => {
+                {movies.map((movie: Movie) => {
                     const { seconds, minutes, hours, days } = movie.remainingTime || calculateRemainingTime(movie.releaseDate);
                     return (
                         <div key={movie.id} className="movie">
