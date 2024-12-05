@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { SearchMovies } from '@/utils/searchMovie';
+import Image from 'next/image';
 
 interface Movie {
     id: number;
@@ -48,6 +49,7 @@ export const MovieSearchPage = () => {
         return () => clearInterval(intervalId);
     }, []);
 
+
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault()
         if (!query.trim()) return
@@ -56,12 +58,12 @@ export const MovieSearchPage = () => {
             const results = await SearchMovies(query)
             console.log(results)
 
-            const formattedResults: Movie[] = results.map((movie: any) => ({
+            const formattedResults: Movie[] = results.map((movie) => ({
                 id: movie.id,
                 title: movie.title,
                 posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '',
                 releaseDate: movie.release_date || 'unknown for now',
-                description: movie.overview || "ne description found",
+                description: movie.description || "ne description found",
             }));
 
             setMovies(formattedResults)
@@ -82,7 +84,7 @@ export const MovieSearchPage = () => {
                     return (
                         <div key={movie.id} className="movie">
                             <div className="poster">
-                                <img src={movie.posterPath} alt={movie.title} />
+                                <Image src={movie.posterPath} alt={movie.title}></Image>
                             </div>
                             <div className="details">
                                 <h2>{movie.title}</h2>

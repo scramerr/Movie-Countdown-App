@@ -1,6 +1,15 @@
 import { fetchMovies } from '@/utils/fetchMovies';
 
-export const SearchMovies = async (query: string): Promise<any[]> => {
+interface Movie {
+  id: number;
+  title: string;
+  release_date: string;
+  poster_path?: string;
+  description?: string;
+}
+
+
+export const SearchMovies = async (query: string): Promise<Movie[]> => {
   try {
     const movies = await fetchMovies(query);
     return movies;
