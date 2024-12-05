@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { SearchMovies } from '@/utils/searchMovie';
-import { ExpandableCardDemo } from './ExpandableCard';
 
 interface Movie {
     id: number;

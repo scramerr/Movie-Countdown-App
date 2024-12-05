@@ -10,7 +10,6 @@ interface Movie {
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
   try {
     const currentDate = new Date(); 
-    const formattedDate = currentDate.toISOString().split('T')[0]; 
 
     const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {
