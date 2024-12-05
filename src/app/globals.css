@@ -21,9 +21,6 @@ body {
 }
 
 
-
-
-
 body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to bottom, #193d4d, #203a43, #2c5364);
@@ -40,8 +37,8 @@ body {
 
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible grid */
-  gap: 20px; /* Space between cards */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
   margin: 0 auto;
   padding: 20px;
   max-width: 1200px;
@@ -60,7 +57,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 400px; /* Ensures consistent height */
+  min-height: 400px; 
 }
 
 .movie:hover {
@@ -82,7 +79,7 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Aligns content to the top */
+  justify-content: flex-start; 
   align-items: center;
   text-align: center;
 }
@@ -92,10 +89,10 @@ body {
   font-weight: bold;
   color: #fff;
   margin: 10px 0;
-  max-height: 3em; /* Limits the height of the title */
+  max-height: 3em; 
   overflow: hidden;
-  text-overflow: ellipsis; /* Adds "..." if the title overflows */
-  white-space: nowrap; /* Prevents wrapping */
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
 }
 
 .details p {
@@ -104,7 +101,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Countdown Section */
 .countdown {
   display: flex;
   justify-content: space-between;
@@ -130,17 +126,18 @@ body {
   text-align: center;
 }
 
-/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
   .movie-list {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts for smaller devices */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
   }
 
+
   .movie {
-    min-height: 350px; /* Adjust height for smaller cards */
+    min-height: 350px; 
   }
 
   .details h2 {
-    font-size: 1.2rem; /* Smaller title font size */
+    font-size: 1.2rem; 
   }
 }
+

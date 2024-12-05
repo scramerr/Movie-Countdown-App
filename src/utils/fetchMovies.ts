@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { pages } from 'next/dist/build/templates/app-page';
 
 interface Movie {
   id: number;
@@ -7,23 +8,41 @@ interface Movie {
   poster_path?: string;
 }
 
+
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
   try {
-    const currentDate = new Date(); 
+    const currentDate = new Date();
 
-    const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
-      params: {
-        api_key: '85955791d4e96bd6122126c47f758e57', 
-        query: query,
-      },
-    });
+    let currentPage = 1
+    let totalPages = 1
 
-    const upcomingMovies = response.data.results.filter((movie: Movie) => {
-      const releaseDate = new Date(movie.release_date);
-      return releaseDate > currentDate; 
-    });
+    let movies:Movie[] = []
 
-    return upcomingMovies;
+    while (currentPage <= totalPages) {
+      const response = await axios.get('https://api.themoviedb.org/3/search/movie', {
+        params: {
+          api_key: '85955791d4e96bd6122126c47f758e57',
+          page: currentPage,
+          query: query,
+        },
+      });
+
+      totalPages = Math.min(10, response.data.total_pages)
+      currentPage++
+
+
+
+      movies =  [...movies, ...response.data.results.filter((movie: Movie) => {
+        const releaseDate = new Date(movie.release_date);
+        return releaseDate > currentDate;
+      })];
+
+    }
+
+    console.log(movies)
+    return movies
+
+    
 
   } catch (error) {
     console.error('Error fetching movies:', error);

@@ -47,6 +47,7 @@ export const MovieSearchPage = () => {
                 remainingTime: calculateRemainingTime(movie.releaseDate)
             })));
         }, 1000);
+
         return () => clearInterval(intervalId);
     }, []);
 
@@ -62,9 +63,9 @@ export const MovieSearchPage = () => {
             const formattedResults: Movie[] = results.map((movie) => ({
                 id: movie.id,
                 title: movie.title,
-                posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '',
+                posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : `https://placehold.co/400x600?text=No+Image+Found+For+\\n+${movie.title.replaceAll(" ", "+")}`,
                 releaseDate: movie.release_date || 'unknown for now',
-                description: movie.description || "ne description found",
+                description: movie.description || "ne description found",   
             }));
 
             setMovies(formattedResults)
@@ -75,17 +76,16 @@ export const MovieSearchPage = () => {
         }
     }
 
-
     return (
         <>
-            <h1 className="title">Upcoming Movies Countdown</h1>
-            <div className="movie-list">
+            <h1 className="title size-xl">Upcoming Movies Countdown</h1>
+            <div className="movie-list ">
                 {movies.map((movie: Movie) => {
                     const { seconds, minutes, hours, days } = movie.remainingTime || calculateRemainingTime(movie.releaseDate);
                     return (
                         <div key={movie.id} className="movie">
                             <div className="poster">
-                                <Image src={movie.posterPath} alt={movie.title}></Image>
+                                <Image src={movie.posterPath} alt={movie.title} width={200} height={1000}></Image>
                             </div>
                             <div className="details">
                                 <h2>{movie.title}</h2>
