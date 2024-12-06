@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { pages } from 'next/dist/build/templates/app-page';
 
 interface Movie {
   id: number;
@@ -39,7 +38,6 @@ export const fetchMovies = async (query: string): Promise<Movie[]> => {
 
     }
 
-    console.log(movies)
     return movies
 
     
