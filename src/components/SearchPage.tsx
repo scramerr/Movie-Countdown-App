@@ -10,7 +10,7 @@ interface Movie {
     description: string;
     releaseDate: string;
     posterPath: string;
-    remainingTime?: RemainingTime; 
+    remainingTime?: RemainingTime;
 }
 
 interface RemainingTime {
@@ -21,9 +21,10 @@ interface RemainingTime {
 }
 
 export const MovieSearchPage = () => {
-
     const [query, setQuery] = useState('')
     const [movies, setMovies] = useState<Movie[]>([]);
+
+    const [searched, setSearched] = useState(false)
 
     const calculateRemainingTime = (releaseDate: string): RemainingTime => {
 
@@ -54,7 +55,13 @@ export const MovieSearchPage = () => {
 
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (!query.trim()) return
+        setSearched(true)
+
+        if (!query.trim()) {
+            setSearched(false)
+            setMovies([])
+            return
+        }
 
         try {
             const results = await SearchMovies(query)
@@ -65,7 +72,7 @@ export const MovieSearchPage = () => {
                 title: movie.title,
                 posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : `https://placehold.co/400x600?text=No+Image+Found+For+\\n+${movie.title.replaceAll(" ", "+")}`,
                 releaseDate: movie.release_date || 'unknown for now',
-                description: movie.description || "ne description found",   
+                description: movie.description || "ne description found",
             }));
 
             setMovies(formattedResults)
@@ -79,41 +86,13 @@ export const MovieSearchPage = () => {
     return (
         <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white min-h-screen flex flex-col items-center justify-center">
             <h1 className="title absolute top-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white text-center py-6 px-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 rounded-lg shadow-lg">Countdown For Your Upcoming Movies</h1>
-            <div className="movie-list flex flex-wrap justify-center gap-10 px-4 mt-72">
-                {
-                    movies.map((movie: Movie) => {
-                    const { seconds, minutes, hours, days } = movie.remainingTime || calculateRemainingTime(movie.releaseDate);
-                    return (
-                        <div key={movie.id} className="movie max-w-72">
-                            <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noopener noreferrer">
-                                <div className="poster">
-                                    <Image src={movie.posterPath} alt={movie.title} width={200} height={300}></Image>
-                                </div>
-                            </a>        
-                            <div className="details">
-                                <div className='min-h-20 text-wrap'>
-                                    <span className='text-2xl font-extrabold text-wrap'>{movie.title}</span>
-                                </div>
-                                <p>Release Date: {movie.releaseDate}</p>
-                            </div>
 
-                            <div className="countdown">
-                                <div>
-                                    <span className="days">{String(days).padStart(2, '0')}</span> <div>Days</div>
-                                </div>
-                                <div>
-                                    <span className="hours">{String(hours).padStart(2, '0')}</span> <div>Hours</div>
-                                </div>
-                                <div>
-                                    <span className="minutes">{String(minutes).padStart(2, '0')}</span> <div>Minutes</div>
-                                </div>
-                                <div>
-                                    <span className="seconds">{String(seconds).padStart(2, '0')}</span> <div>Seconds</div>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
+            <div className="absolute top-20 w-full h-[60vh]">
+                <img
+                    src={'/landing.jpg'}
+                    alt="Background Image"
+                    className="inset-0 w-full h-full object-cover opacity-50"
+                />
             </div>
 
             <div className="search-section">
@@ -137,6 +116,48 @@ export const MovieSearchPage = () => {
                     </button>
                 </form>
             </div>
+
+            <div className="movie-list flex flex-wrap justify-center gap-10 px-4 mt-72">
+                {
+                    !movies.length && searched ?
+
+                        <div>No Movies Found</div>
+                        :
+                        movies.map((movie: Movie) => {
+                            const { seconds, minutes, hours, days } = movie.remainingTime || calculateRemainingTime(movie.releaseDate);
+                            return (
+                                <div key={movie.id} className="movie max-w-72">
+                                    <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noopener noreferrer">
+                                        <div className="poster">
+                                            <Image src={movie.posterPath} alt={movie.title} width={200} height={300}></Image>
+                                        </div>
+                                    </a>
+                                    <div className="details">
+                                        <div className='min-h-20 text-wrap'>
+                                            <span className='text-2xl font-extrabold text-wrap'>{movie.title}</span>
+                                        </div>
+                                        <p>Release Date: {movie.releaseDate}</p>
+                                    </div>
+
+                                    <div className="countdown">
+                                        <div>
+                                            <span className="days">{String(days).padStart(2, '0')}</span> <div>Days</div>
+                                        </div>
+                                        <div>
+                                            <span className="hours">{String(hours).padStart(2, '0')}</span> <div>Hours</div>
+                                        </div>
+                                        <div>
+                                            <span className="minutes">{String(minutes).padStart(2, '0')}</span> <div>Minutes</div>
+                                        </div>
+                                        <div>
+                                            <span className="seconds">{String(seconds).padStart(2, '0')}</span> <div>Seconds</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+            </div>
+
         </div>
     )
 }
