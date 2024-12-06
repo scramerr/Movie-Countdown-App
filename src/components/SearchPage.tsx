@@ -77,16 +77,19 @@ export const MovieSearchPage = () => {
     }
 
     return (
-        <>
-            <h1 className="title size-xl">Upcoming Movies Countdown</h1>
-            <div className="movie-list flex flex-row flex-wrap gap-10">
-                {movies.map((movie: Movie) => {
+        <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white min-h-screen flex flex-col items-center justify-center">
+            <h1 className="title absolute top-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white text-center py-6 px-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 rounded-lg shadow-lg">Countdown For Your Upcoming Movies</h1>
+            <div className="movie-list flex flex-wrap justify-center gap-10 px-4 mt-72">
+                {
+                    movies.map((movie: Movie) => {
                     const { seconds, minutes, hours, days } = movie.remainingTime || calculateRemainingTime(movie.releaseDate);
                     return (
                         <div key={movie.id} className="movie max-w-72">
-                            <div className="poster">
-                                <Image src={movie.posterPath} alt={movie.title} width={200} height={1000}></Image>
-                            </div>
+                            <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noopener noreferrer">
+                                <div className="poster">
+                                    <Image src={movie.posterPath} alt={movie.title} width={200} height={300}></Image>
+                                </div>
+                            </a>        
                             <div className="details">
                                 <div className='min-h-20 text-wrap'>
                                     <span className='text-2xl font-extrabold text-wrap'>{movie.title}</span>
@@ -134,6 +137,6 @@ export const MovieSearchPage = () => {
                     </button>
                 </form>
             </div>
-        </>
+        </div>
     )
 }
