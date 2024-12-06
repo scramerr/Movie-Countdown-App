@@ -36,12 +36,9 @@ body {
 
 
 .movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 20px; 
   margin: 0 auto;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -57,7 +54,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 400px; 
 }
 
 .movie:hover {
@@ -127,9 +123,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .movie-list {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-  }
+  /* .movie-list {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); 
+  } */
 
 
   .movie {

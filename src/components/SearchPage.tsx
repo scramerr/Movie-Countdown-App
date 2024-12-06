@@ -79,16 +79,18 @@ export const MovieSearchPage = () => {
     return (
         <>
             <h1 className="title size-xl">Upcoming Movies Countdown</h1>
-            <div className="movie-list ">
+            <div className="movie-list flex flex-row flex-wrap gap-10">
                 {movies.map((movie: Movie) => {
                     const { seconds, minutes, hours, days } = movie.remainingTime || calculateRemainingTime(movie.releaseDate);
                     return (
-                        <div key={movie.id} className="movie">
+                        <div key={movie.id} className="movie max-w-72">
                             <div className="poster">
                                 <Image src={movie.posterPath} alt={movie.title} width={200} height={1000}></Image>
                             </div>
                             <div className="details">
-                                <h2>{movie.title}</h2>
+                                <div className='min-h-20 text-wrap'>
+                                    <span className='text-2xl font-extrabold text-wrap'>{movie.title}</span>
+                                </div>
                                 <p>Release Date: {movie.releaseDate}</p>
                             </div>
 
