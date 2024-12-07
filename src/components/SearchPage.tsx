@@ -84,7 +84,7 @@ export const MovieSearchPage = () => {
     }
 
     return (
-        <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 text-white min-h-screen flex flex-col items-center justify-start">
+        <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 text-white min-h-screen flex flex-col items-center justify-between">
 
             <div className="w-full h-[60vh] relative top-0 flex flex-col">
 
@@ -175,8 +175,7 @@ export const MovieSearchPage = () => {
                             );
                         })}
             </div>
-
-            <footer className="w-full bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 mt-12 py-4 flex flex-col items-center justify-center text-white">
+            <footer className="w-full bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 mt-12 py-6 flex flex-col items-center justify-center text-white">
                 <div className="flex flex-col items-center sm:flex-row sm:justify-between sm:w-3/4 w-full gap-6 sm:gap-10">
 
                     <div className="text-center sm:text-left">
