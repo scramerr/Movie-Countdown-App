@@ -89,7 +89,7 @@ export const MovieSearchPage = () => {
             <div className="w-full h-[60vh] relative top-0 flex flex-col">
                 <h1 className="pt-8 z-40 opacity-85 title text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white text-center py-6 px-4 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg">Countdown For Your Upcoming Movies</h1>
 
-                <div className="absolute inset-0 top-0 w-full h-full bg-gradient-to-b from-black/60 via-black/30 to-gray-900/10 to-transparent z-10"></div>
+                <div className="absolute inset-0 top-0 w-full h-full bg-gradient-to-b from-black/60 via-black/30 to-transparent z-10"></div>
                 <img
                     src={'/landing.jpg'}
                     alt="Background Image"
