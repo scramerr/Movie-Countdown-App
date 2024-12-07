@@ -197,7 +197,7 @@ export const MovieSearchPage = () => {
                             GitHub
                         </a>
                         <a
-                            href="mailto:your-email@example.com"
+                            href="mailto:mohummadasadshaikh@gmail.com"
                             className="text-blue-400 font-bold hover:underline"
                         >
                             Email
