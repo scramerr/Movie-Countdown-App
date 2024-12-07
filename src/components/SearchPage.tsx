@@ -96,18 +96,18 @@ export const MovieSearchPage = () => {
                     className="absolute inset-0 w-full h-full object-cover opacity-30"
                 />
 
-                <div className="mt-96 search-section z-20 flex flex-col items-center justify-center mb-6">
+                <div className="mt-12 search-section z-20 flex flex-col items-center justify-center">
                     <form
                         onSubmit={handleSearch}
-                        className="relative flex items-center w-full max-w-lg gap-4"
+                        className="relative flex flex-col sm:flex-row items-center w-full max-w-lg gap-4 px-4"
                     >
-                        <div className=''>
+                        <div>
                             <input
                                 type="text"
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 placeholder="Search for a movie..."
-                                className="px-6 pr-10 py-3 text-2xl font-bold bg-black rounded-[6px] relative group transition duration-200 text-white"
+                                className="px-6 pr-10 py-3 text-2xl font-bold bg-black rounded-[6px] relative group transition duration-200 text-white w-full sm:w-auto"
                             />
                         </div>
 
@@ -117,28 +117,6 @@ export const MovieSearchPage = () => {
                                 Search
                             </div>
                         </button>
-
-                        {/* <style jsx>{`
-                            @keyframes shimmer {
-                                0% {
-                                    background-position: -200% 0;
-                                }
-                                100% {
-                                    background-position: 200% 0;
-                                }
-                            }
-
-                            .animate-shimmer {
-                                animation: shimmer 2.0s infinite linear;
-                            }
-                        `}</style> */}
-
-                        {/* <button
-                            type="submit"
-                            className="px-8 py-4 text-lg rounded-full bg-blue-500 text-white font-semibold hover:bg-blue-600 shadow-md hover:shadow-lg transition-all duration-300"
-                        >
-                            Search
-                        </button> */}
                     </form>
                 </div>
             </div>
@@ -149,7 +127,7 @@ export const MovieSearchPage = () => {
                 </h2>
             )}
 
-            <div className="movie-list flex flex-wrap justify-center gap-10 px-4">
+            <div className="movie-list flex flex-wrap justify-center gap-6 px-2 sm:px-4 mt-8">
                 {
                     !movies.length && searched ?
 
