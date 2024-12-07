@@ -118,7 +118,7 @@ export const MovieSearchPage = () => {
                             </div>
                         </button>
 
-                        <style jsx>{`
+                        {/* <style jsx>{`
                             @keyframes shimmer {
                                 0% {
                                     background-position: -200% 0;
@@ -131,7 +131,7 @@ export const MovieSearchPage = () => {
                             .animate-shimmer {
                                 animation: shimmer 2.0s infinite linear;
                             }
-                        `}</style>
+                        `}</style> */}
 
                         {/* <button
                             type="submit"
