@@ -128,7 +128,7 @@ export const MovieSearchPage = () => {
             </div>
 
             {movies.length > 0 && (
-                <h2 className="mt-12 mb-8 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-500">
+                <h2 className="mt-12 mb-8 text-4xl text-center sm:text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-500">
                     Current Upcoming Movies:
                 </h2>
             )}
