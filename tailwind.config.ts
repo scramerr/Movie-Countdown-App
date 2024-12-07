@@ -1,14 +1,5 @@
 import type { Config } from "tailwindcss"
 
-
-const colors = require("tailwindcss/colors")
-
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette")
-
-
-
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,15 +10,15 @@ export default {
   theme: {
     extend: {
       animation: {
-        aurora: "aurora 60s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
       keyframes: {
-        aurora: {
+        shimmer: {
           from: {
-            backgroundPosition: "50% 50%, 50% 50%",
+            backgroundPosition: "0 0",
           },
           to: {
-            backgroundPosition: "350% 50%, 350% 50%",
+            backgroundPosition: "-200% 0",
           },
         },
       },
@@ -37,19 +28,5 @@ export default {
       },
     },
   },
-  plugins: [addVariablesForColors],
+  plugins: [],
 } satisfies Config;
-
-
-
-
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
- 
-  addBase({
-    ":root": newVars,
-  });
-}
