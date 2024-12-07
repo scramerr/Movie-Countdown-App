@@ -96,9 +96,9 @@ export const MovieSearchPage = () => {
             </div> */}
 
             <div className="search-section">
-                <div className="flex justify-center mt-20 mb-20">
+{/*                 <div className="flex justify-center mt-20 mb-20">
                     <h1 className="text-5xl">Search For Upcoming Movies</h1>
-                </div>
+                </div> */}
 
                 <form onSubmit={handleSearch} className="flex gap-4 justify-center mb-6">
                     <input
