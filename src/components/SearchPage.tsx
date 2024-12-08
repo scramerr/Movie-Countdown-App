@@ -159,7 +159,10 @@ export const MovieSearchPage = () => {
 
                                     <div className="countdown">
                                         <div>
-                                            <span className="days">{String(days).padStart(2, '0')}</span> <div>Days</div>
+                                            <div className="days bg-clip-text">
+                                                <span>{String(days).padStart(2, '0')}</span>
+                                            </div>
+                                            <div>Days</div>
                                         </div>
                                         <div>
                                             <span className="hours">{String(hours).padStart(2, '0')}</span> <div>Hours</div>

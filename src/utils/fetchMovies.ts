@@ -26,7 +26,7 @@ export const fetchMovies = async (query: string): Promise<Movie[]> => {
         },
       });
 
-      totalPages = Math.min(10, response.data.total_pages)
+      totalPages = Math.min(30, response.data.total_pages)
       currentPage++
 
 
