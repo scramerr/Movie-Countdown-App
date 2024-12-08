@@ -88,7 +88,7 @@ export const MovieSearchPage = () => {
 
             <div className="w-full h-[60vh] relative top-0 flex flex-col">
 
-                <h1 className="pt-8 z-40 opacity-85 title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center py-6 px-4 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg">MURTAZA PAGAL LMAOOOOOOOO JA FURTHER MATHS KARRRR CHAL CHAL</h1>
+                <h1 className="pt-8 z-40 opacity-85 title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center py-6 px-4 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg">Upcoming Movies Countdown</h1>
 
                 <div>
                     <p>
