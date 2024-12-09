@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { SearchMovies } from '@/utils/searchMovie';
 import Image from 'next/image';
+import { fetchMovies } from '@/utils/fetchMovies';
 
 interface Movie {
     id: number;
@@ -64,7 +64,7 @@ export const MovieSearchPage = () => {
         }
 
         try {
-            const results = await SearchMovies(query)
+            const results = await fetchMovies(query)
             console.log(results)
 
             const formattedResults: Movie[] = results.map((movie) => ({
@@ -87,7 +87,7 @@ export const MovieSearchPage = () => {
         <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 text-white min-h-screen flex flex-col items-center justify-between">
 
             <div className="w-full h-[60vh] relative top-0 flex flex-col">
-
+                
                 <h1 className="pt-8 z-40 opacity-85 title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center py-6 px-4 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-lg">Upcoming Movies Countdown</h1>
 
                 <div>
@@ -136,7 +136,6 @@ export const MovieSearchPage = () => {
             <div className="movie-list flex flex-wrap justify-center gap-6 px-2 sm:px-4 mt-8">
                 {
                     !movies.length && searched ?
-
                         <div>
                             <h1 className="text-5xl sm:text-6xl lg:text-6xl font-extrabold text-white text-center py-6 px-4 from-gray-700 via-gray-800 to-gray-900 rounded-lg shadow-lg">No Movies Found...</h1>
                         </div>
@@ -220,9 +219,6 @@ export const MovieSearchPage = () => {
                     © {new Date().getFullYear()} Group Project. All rights reserved.
                 </p>
             </footer>
-
-
-
         </div>
     )
 }
